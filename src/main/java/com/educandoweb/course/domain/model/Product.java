@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,5 +19,6 @@ public class Product {
     private Double price;
     private String imgUrl;
     private List<Order> orders = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
 }

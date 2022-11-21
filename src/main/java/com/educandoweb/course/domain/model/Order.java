@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
+
 public class Order {
 
     @Id
@@ -21,6 +21,7 @@ public class Order {
     private OrderStatus orderStatus;
     private User client;
     private List<Product> items = new ArrayList<>();
+    private Payment payment;
 
     public Double total(){
         return null;

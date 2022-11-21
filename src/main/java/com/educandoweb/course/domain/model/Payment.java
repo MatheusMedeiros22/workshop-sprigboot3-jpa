@@ -9,11 +9,12 @@ import lombok.Data;
 import java.time.LocalDate;
 
 @Data
-@Entity
+
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate moment;
+    private Order order;
 
 }
