@@ -61,7 +61,7 @@ public class OrderItem {
 
     public Double getSubTotal() {
         return price * quantity;
-    }
+    } //pra aparecer no json, tem que colocar o get na frente
 
     @Override
     public int hashCode() {

@@ -58,8 +58,12 @@ public class Order implements Serializable {
         }
     }
 
-    public Double total(){
-        return null;
+    public Double getTotal(){
+        Double total = 0d;
+        for(OrderItem orderItem: items){
+            total += orderItem.getSubTotal();//deve da pra fazer com stream
+        }
+        return total;
     }
 
 }
