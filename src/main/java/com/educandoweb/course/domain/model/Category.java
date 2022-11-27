@@ -1,5 +1,6 @@
 package com.educandoweb.course.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Transient
+    @ManyToMany(mappedBy = "categories")
+    @JsonIgnore
     private Set<Product> products = new HashSet<>();
 
     public Category(Long id, String name) {
