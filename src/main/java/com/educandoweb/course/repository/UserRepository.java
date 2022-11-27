@@ -1,8 +1,9 @@
 package com.educandoweb.course.repository;
 
-import org.apache.catalina.User;
+
+import com.educandoweb.course.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-public interface UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
 }

@@ -1,18 +1,18 @@
 package com.educandoweb.course.domain.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "tb_user")
+@AllArgsConstructor
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
