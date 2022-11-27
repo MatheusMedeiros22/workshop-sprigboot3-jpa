@@ -1,15 +1,22 @@
 package com.educandoweb.course.domain.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@NoArgsConstructor
+@Table(name = "tb_product")
 public class Product {
+    private static final long serialVersionUID = 1L;
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +24,15 @@ public class Product {
     private String description;
     private Double price;
     private String imgUrl;
-    private List<Order> orders = new ArrayList<>();
-    private List<Category> categories = new ArrayList<>();
+    //private List<Order> orders = new ArrayList<>();
+    @Transient
+    private Set<Category> categories = new HashSet<>();
 
+    public Product(Long id, String name, String description, Double price, String imgUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgUrl = imgUrl;
+    }
 }

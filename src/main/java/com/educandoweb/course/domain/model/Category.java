@@ -3,25 +3,30 @@ package com.educandoweb.course.domain.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Data
-@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @NoArgsConstructor
 @Table(name = "tb_category")
 public class Category {
-    @Serial
     private static final long serialVersionUID = 1L;
-
+    @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    //private List<Product> products = new ArrayList<>();
+    @Transient
+    private Set<Product> products = new HashSet<>();
+
+    public Category(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
