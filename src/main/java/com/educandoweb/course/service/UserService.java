@@ -4,9 +4,7 @@ import com.educandoweb.course.domain.model.User;
 import com.educandoweb.course.exception.UserNotFoundException;
 import com.educandoweb.course.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
