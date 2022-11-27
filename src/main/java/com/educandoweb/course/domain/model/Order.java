@@ -37,8 +37,8 @@ public class Order implements Serializable {
     private User client;
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
-//    private List<Product> items = new ArrayList<>();
-//    private Payment payment;
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private Payment payment;
 
 
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
