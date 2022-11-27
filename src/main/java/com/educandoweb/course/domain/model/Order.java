@@ -1,7 +1,7 @@
 package com.educandoweb.course.domain.model;
 
+import com.educandoweb.course.domain.model.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,17 +27,29 @@ public class Order implements Serializable {
     private Long id;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
-    private OrderStatus orderStatus;
+    private Integer orderStatus;
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
 //    private List<Product> items = new ArrayList<>();
 //    private Payment payment;
 
-    public Order(Long id, Instant moment, User user) {
+
+    public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
         this.id = id;
         this.moment = moment;
-        this.client = user;
+        setOrderStatus(orderStatus);
+        this.client = client;
+    }
+
+    public OrderStatus getOrderStatus(){
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus){
+        if(orderStatus != null) {
+            this.orderStatus = orderStatus.getCode();
+        }
     }
 
     public Double total(){
