@@ -4,6 +4,7 @@ import com.educandoweb.course.domain.model.User;
 import com.educandoweb.course.exception.UserNotFoundException;
 import com.educandoweb.course.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +30,11 @@ public class UserService {
     public void delete(Long id){
         var user = findById(id);
         userRepository.delete(user);
+    }
+
+    public User update(Long id, User user){
+        var userAtDataBase = findById(id);
+        BeanUtils.copyProperties(user, userAtDataBase, "id");
+        return create(userAtDataBase);
     }
 }
