@@ -23,4 +23,11 @@ public class UserService {
                 String.format("Não existe cadastro de usuário com o id %d", id)
         ));
     }
+    public User create(User user){
+        return userRepository.save(user);
+    }
+    public void delete(Long id){
+        var user = findById(id);
+        userRepository.delete(user);
+    }
 }
