@@ -35,6 +35,10 @@ public class UserService {
     public User update(Long id, User user){
         var userAtDataBase = findById(id);
         BeanUtils.copyProperties(user, userAtDataBase, "id");
+//        User entity = userRepository.getReferenceById(id); Melhor que o find by id , n lembro pq
+//        entity.setName(user.getName());
+//        entity.setEmail(user.getEmail());
+//        entity.setPhone(user.getPhone());
         return create(userAtDataBase);
     }
 }
